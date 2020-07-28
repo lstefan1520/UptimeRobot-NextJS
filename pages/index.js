@@ -34,7 +34,7 @@ function Home({ title, monitorsSSR }) {
     m.filter((a) => a.status !== 2).length > 0
       ? { m: "Minor Outage", c: "#f5d5be" }
       : {
-          m: `All Systems Fully Operational (${m.length}/${m.length})`,
+          m: `All Systems Operational`,
           c: "#47cbac",
         };
   return (
@@ -42,12 +42,12 @@ function Home({ title, monitorsSSR }) {
       <Head>
         <title>Pixel Chat Status</title>
         <link rel="icon" href="/favicon.ico" />
-        <meta property="og:title" content={"Pixel Chat Status"} />
+        <meta property="og:title" content={"PloxHost - Status"} />
         <meta
           property="og:description"
-          content={title ? title : "Check the status of Pixel Chat services."}
+          content={title ? title : "Check the status of PloxHost Services"}
         />
-        <meta property="og:url" content="https://status.pixelchat.tv" />
+        <meta property="og:url" content="https://status.plox.host/" />
         <meta property="og:type" content="website" />
       </Head>
       {!error ? (
@@ -72,21 +72,8 @@ function Home({ title, monitorsSSR }) {
             ))}
           </div>
           <div className="text-center w-full">
-            This page shows the status of all sites & services created by Pixel
-            Dev LLC.
+            This page automatically shows the status of our services. For updates please monitor our twitter. @PloxHostStatus
           </div>
-          <div className="text-center w-full">
-            This status page is 100% open source{" "}
-            <a
-              href="https://github.com/ACPixel/UptimeRobot-NextJS"
-              target="_blank"
-              className="text-blue-300"
-            >
-              here
-            </a>{" "}
-            if you would like to make your own. Made with ❤ by Pixel Dev LLC.
-          </div>
-        </div>
       ) : (
         <Error statusCode={500} title={error} />
       )}
@@ -104,7 +91,7 @@ Home.getInitialProps = async ({ req }) => {
       let title =
         m.filter((a) => a.status !== 2).length > 0
           ? "Minor Outage"
-          : `All Systems Fully Operational (${m.length}/${m.length})`;
+          : `All Systems Operational`;
       return { title, monitorsSSR: m };
     } catch {
       return;
