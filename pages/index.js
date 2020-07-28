@@ -72,7 +72,7 @@ function Home({ title, monitorsSSR }) {
             ))}
           </div>
           <div className="text-center w-full">
-            This page automatically shows the status of our services. For updates please monitor our twitter. @PloxHostStatus
+            This page automatically shows the status of our services
           </div>
       ) : (
         <Error statusCode={500} title={error} />
